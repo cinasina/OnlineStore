@@ -6,7 +6,7 @@ from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 
 class UserCreationForm(forms.ModelForm):
-    phone_number = PhoneNumberField(widget=PhoneNumberPrefixWidget(initial='IR'))
+    phone_number = PhoneNumberField(PhoneNumberPrefixWidget(initial='IR'))
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     class Meta:
