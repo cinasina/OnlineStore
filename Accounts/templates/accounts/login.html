@@ -1,0 +1,23 @@
+{% load static %}
+{% include 'includes/messages.html' %}
+<html lang="">
+<head>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{% static 'css/login_fonts.css' %}">
+  <title>Sign in</title>
+</head>
+
+<body>
+  <div class="main">
+    <p class="sign" align="center">Sign in</p>
+    <form class="form1" action="." method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Sign in" class="submit" align="center">
+        <input type="hidden" name="next" value="{{ request.GET.next }}" />
+          <p class="forgot" align="center"><a href="#">Forgot Password? Login With Phone Number</a></p>
+    </form>
+  </div>
+</body>
