@@ -1,0 +1,21 @@
+{% load static %}
+{% include 'includes/messages.html' %}
+<html>
+<head>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{% static 'css/login_fonts.css' %}">
+  <title>Sign in</title>
+</head>
+
+<body>
+  <div class="main">
+    <p class="sign" align="center">Sign up</p>
+    <form class="form1" action="." method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Sign up" class="submit" align="center">
+    </form>
+  </div>
+</body>
