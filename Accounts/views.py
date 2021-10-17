@@ -3,6 +3,7 @@ from .forms import UserLoginForm, UserRegisterForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .models import User
+from django.contrib.auth.decorators import login_required
 
 
 def user_login(request):
@@ -47,6 +48,7 @@ def user_register(request):
     return render(request, 'accounts/register.html', {'form': form})
 
 
+@login_required
 def user_logout(request):
     logout(request)
     messages.success(request, 'See You Soon', extra_tags='success')
