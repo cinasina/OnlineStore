@@ -45,3 +45,9 @@ def user_register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'accounts/register.html', {'form': form})
+
+
+def user_logout(request):
+    logout(request)
+    messages.success(request, 'See You Soon', extra_tags='success')
+    return redirect('home:home')
