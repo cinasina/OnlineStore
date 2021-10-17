@@ -6,7 +6,7 @@
                 <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
                 <li><a href="#"><i class="fa fa-user"></i> My Cart</a></li>
                 <li><a href="#"><i class="fa fa-user"></i> Checkout</a></li>
-                <li><a href="#"><i class="fa fa-user"></i> Logout</a></li>
+                <li><a href="{% url 'accounts:logout' %}"><i class="fa fa-user"></i> Logout</a></li>
             {% else %}
                 <li><a href="{% url 'accounts:login' %}"><i class="fa fa-user"></i> Login</a></li>
                 <li><a href="{% url 'accounts:register' %}"><i class="fa fa-user"></i> Register</a></li>
