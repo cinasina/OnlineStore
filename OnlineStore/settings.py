@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'Accounts.apps.AccountsConfig',
     'Home.apps.HomeConfig',
     'Store.apps.StoreConfig',
+    'sorl.thumbnail',
     'phonenumber_field',
 ]
 
