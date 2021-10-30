@@ -4,9 +4,12 @@ from django.shortcuts import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    main_name = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='main')
+    sub_name = models.ManyToManyField('self', blank=True, related_name='sub')
     slug = models.SlugField(unique=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    is_subname = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -16,7 +19,8 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    main_category = models.ForeignKey(Category, models.CASCADE, related_name='main_category')
+    sub_category = models.ForeignKey(Category, models.CASCADE, related_name='sub_category')
     name = models.CharField(max_length=250)
     slug = models.SlugField(unique=True)
     description = models.TextField()
@@ -33,4 +37,7 @@ class Product(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('store:product', args=[self.slug])
+        return reverse('store:product_single', args=[self.main_category,
+                                                     self.sub_category.slug,
+                                                     self.pk
+                                                     ])
