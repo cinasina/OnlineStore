@@ -20,6 +20,9 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(unique=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
+                ('is_subname', models.BooleanField(default=False)),
+                ('main_name', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='main', to='Store.category')),
+                ('sub_name', models.ManyToManyField(blank=True, related_name='_Store_category_sub_name_+', to='Store.Category')),
             ],
             options={
                 'verbose_name_plural': 'Categories',
@@ -37,7 +40,8 @@ class Migration(migrations.Migration):
                 ('available', models.BooleanField(default=True)),
                 ('created', models.DateTimeField(auto_now=True)),
                 ('updated', models.DateTimeField(auto_now_add=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products', to='Store.category')),
+                ('main_category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='main_category', to='Store.category')),
+                ('sub_category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='sub_category', to='Store.category')),
             ],
             options={
                 'ordering': ('-created',),
