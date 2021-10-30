@@ -18,11 +18,10 @@ def make_unavailable(product, request, queryset):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('category', 'name', 'price', 'available',)
-    list_editable = ('name', 'price', 'available',)
+    list_display = ('name', 'price', 'available',)
+    list_editable = ('price', 'available',)
     prepopulated_fields = {'slug': ('name',)}
     search_fields = ('category', 'name', 'slug',)
-    list_filter = ('category', 'name', 'available',)
+    list_filter = ('name', 'available',)
     actions = (make_unavailable,)
-
-
+    raw_id_fields = ('sub_category',)
