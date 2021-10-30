@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.contrib import messages
-from Store.models import Product
+from Store.models import Category, Product
 
 
-def home(request, slug=None):
+def home(request):
+    categories = Category.objects.filter(is_subname=False)
     products = Product.objects.filter(available=True)
-    if slug:
-        products = Product.objects.get(slug=slug)
-    context = {'products': products}
+    context = {'products': products, 'categories': categories}
     return render(request, 'home/home.html', context=context)
 
 
