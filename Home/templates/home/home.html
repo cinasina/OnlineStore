@@ -21,7 +21,7 @@
                                         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="">
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="{{ product.get_absolute_url }}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{ product.get_absolute_url|lower }}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                     {% endthumbnail %}
                                 </div>
@@ -92,4 +92,10 @@
         </div>
     </div> <!-- End product widget area -->
 
+{% endblock %}
+
+{% block categories %}
+    {% for category in categories %}
+       <a href="{% url 'store:product_category' category.name|lower %}">{{ category }}</a>
+    {% endfor %}
 {% endblock %}
