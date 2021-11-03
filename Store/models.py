@@ -25,6 +25,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField()
     price = models.PositiveSmallIntegerField(default=0)
+    quantity = models.PositiveIntegerField(default=1)
     image = models.ImageField(upload_to='Products/%Y/%m/%d')
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now=True)
