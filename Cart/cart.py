@@ -16,5 +16,10 @@ class Cart:
         self.cart[product_id]['quantity'] += quantity
         self.save()
 
+    def remove_product(self, product):
+        product_id = str(product.pk)
+        del self.cart[product_id]
+        self.save()
+
     def save(self):
         self.session.modified = True
