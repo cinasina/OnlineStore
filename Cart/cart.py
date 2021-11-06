@@ -25,3 +25,12 @@ class Cart:
 
     def save(self):
         self.session.modified = True
+
+    def __iter__(self):
+        for product in self.cart.values():
+            product['total_price'] = int(product['price']) * int(product['quantity'])
+            yield product
+
+    def final_price(self):
+        return sum(int(product['price']) * int(product['quantity']) for product in self.cart.values())
+
