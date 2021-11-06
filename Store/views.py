@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Product, Category
+from .forms import QuantityForm
 
 
 def product_category(request, name):
@@ -18,6 +19,6 @@ def product_brands(request, name, slug):
 
 def product_single(request, name, slug, pk):
     products = Product.objects.filter(main_category__name__contains=name, sub_category__slug=slug, pk=pk)
-    context = {'products': products}
+    form = QuantityForm()
+    context = {'products': products, 'form': form}
     return render(request, 'store/product.html', context=context)
-
