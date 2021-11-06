@@ -81,10 +81,10 @@
                                         <ins>${{ product.price }}</ins> <del>$100.00</del>
                                     </div>
 
-                                    <form action="#cart" class="cart" method="post">
+                                    <form action="{% url 'cart:add_product' product.pk %}" class="cart" method="post">
                                         <div class="quantity">
                                                 {% csrf_token %}
-                                                #form
+                                                {{ form }}
                                         </div>
                                         <button class="add_to_cart_button" type="submit">Add to cart</button>
                                     </form>
