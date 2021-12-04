@@ -96,6 +96,10 @@
 
 {% block categories %}
     {% for category in categories %}
-       <a href="{% url 'store:product_brands' category.main_name|lower category.slug %}">{{ category }}</a>
+        {% for a, b in num_cat.items %}
+            {% if a == category %}
+               <a href="{% url 'store:product_brands' category.main_name|lower category.slug %}">{{ category }} ({{ b }})</a>
+            {% endif %}
+        {% endfor %}
     {% endfor %}
 {% endblock %}
