@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Home.apps.HomeConfig',
     'Store.apps.StoreConfig',
     'Cart.apps.CartConfig',
+    'Search.apps.SearchConfig',
     'sorl.thumbnail',
     'phonenumber_field',
 ]
