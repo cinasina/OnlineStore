@@ -2,12 +2,20 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.contrib import messages
 from Store.models import Category, Product
+from Search.forms import SearchForm
+from django.db.models import Q
 
 
 def home(request):
     categories = Category.objects.filter(is_subname=False)
     products = Product.objects.filter(available=True)
-    context = {'products': products, 'categories': categories}
+    form = SearchForm()
+    if 'search' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            search_query = form.cleaned_data['search']
+            products = products.filter(Q(name__icontains=search_query) | Q(description__icontains=search_query))
+    context = {'products': products, 'categories': categories, 'form': form}
     return render(request, 'home/home.html', context=context)
 
 
