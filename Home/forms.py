@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contact
+from .models import Contact, NewsLetter
 
 
 class ContactForm(forms.ModelForm):
@@ -20,3 +20,10 @@ class ContactForm(forms.ModelForm):
                 attrs={"type": "message", "class": "form-control", "name": "message", "id": "message", "cols": "30",
                        "rows": "4", "placeholder": "Message"}),
         }
+
+
+class NewsLetterForm(forms.ModelForm):
+    class Meta:
+        model = NewsLetter
+        fields = '__all__'
+
