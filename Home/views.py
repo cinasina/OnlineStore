@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import ContactForm
+from .forms import ContactForm, NewsLetterForm
 from django.contrib import messages
 from Store.models import Category, Product
 from Search.forms import SearchForm
@@ -30,3 +30,13 @@ def contact(request):
         form = ContactForm()
     return render(request, 'home/contact.html', {'form': form})
 
+
+def news_letters(request):
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home:home')
+    else:
+        form = NewsLetterForm()
+    return render(request, 'home/home.html', {'form': form})
