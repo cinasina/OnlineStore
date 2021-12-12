@@ -16,3 +16,8 @@ class Contact(models.Model):
         return '{} With This Email: {} Has Something To Say!'.format(self.name, self.email)
 
 
+class NewsLetter(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email
