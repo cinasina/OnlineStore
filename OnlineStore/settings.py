@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'Accounts.apps.AccountsConfig',
     'Home.apps.HomeConfig',
     'Store.apps.StoreConfig',
@@ -106,6 +108,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
+
+SITE_ID = 1
 
 LANGUAGE_CODE = 'en-us'
 
