@@ -18,10 +18,23 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+from django.contrib.sitemaps.views import sitemap
+from Home.sitemaps import StaticViewSitemap
+from Store.sitemaps import CategorySiteMap, ProductSiteMap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'store-category': CategorySiteMap,
+    'store-products': ProductSiteMap,
+}
+
 urlpatterns = [
     path('', include('Home.urls', namespace='home')),
     path('accounts/', include('Accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
     path('category/', include('Store.urls', namespace='store')),
     path('cart/', include('Cart.urls', namespace='cart')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
