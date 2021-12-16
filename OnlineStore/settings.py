@@ -115,6 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 SITE_ID = 1
 
 # Robots
+ROBOTS_USE_HOST = False
 
 LANGUAGE_CODE = 'en-us'
 
