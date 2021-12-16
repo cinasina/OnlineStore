@@ -34,7 +34,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('category/', include('Store.urls', namespace='store')),
     path('cart/', include('Cart.urls', namespace='cart')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt', include('robots.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
