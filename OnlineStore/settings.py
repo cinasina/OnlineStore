@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'Search.apps.SearchConfig',
     'sorl.thumbnail',
     'phonenumber_field',
+    'robots',
+
 ]
 
 MIDDLEWARE = [
@@ -109,7 +111,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
+# Site-Maps
 SITE_ID = 1
+
+# Robots
 
 LANGUAGE_CODE = 'en-us'
 
