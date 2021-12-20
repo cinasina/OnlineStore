@@ -57,8 +57,8 @@
                     <div class="product-content-right">
                         <div class="product-breadcroumb">
                             <a href="#home">Home</a>
-                            <a href="">#category</a>
-                            <a href="">#item</a>
+                            <a href="">{{ product.sub_category }}</a>
+                            <a href="">{{ product.name }}</a>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -91,7 +91,10 @@
                                     </form>
 
                                     <div class="product-inner-category">
-                                        <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
+                                    <h3>Tags:</h3>
+                                        {% for item in product.tags.all %}
+                                            <a href="{% url 'home:product_tags' item.id %}">{{ item }}</a>
+                                        {% endfor %}
                                     </div>
 
                                     <div role="tabpanel">
