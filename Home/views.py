@@ -40,3 +40,9 @@ def news_letters(request):
     else:
         form = NewsLetterForm()
     return render(request, 'home/home.html', {'form': form})
+
+
+def tags(request, name):
+    products = Product.objects.filter(tags__in=name)
+    context = {'products': products}
+    return render(request, 'store/brand_product.html', context=context)
