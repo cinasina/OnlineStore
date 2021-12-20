@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
+from taggit.managers import TaggableManager
 
 
 class Category(models.Model):
@@ -31,6 +32,7 @@ class Product(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     image = models.ImageField(upload_to='Products/%Y/%m/%d')
     available = models.BooleanField(default=True)
+    tags = TaggableManager()
     created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
 
