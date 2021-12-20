@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'robots',
     'debug_toolbar',
+    'taggit',
 
 ]
 
