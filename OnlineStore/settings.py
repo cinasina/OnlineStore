@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
+    'captcha',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,6 +121,11 @@ SITE_ID = 1
 
 # Robots
 ROBOTS_USE_HOST = False
+
+# Captcha Admin
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
 
 LANGUAGE_CODE = 'en-us'
 
