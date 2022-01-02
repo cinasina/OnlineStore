@@ -33,8 +33,33 @@
 				            Your Message Was Sent, Thank You!
 				      		</div>
 									<form method="post" action="." id="contactForm" name="contactForm" class="contactForm">
+                                        {% if request.user.is_authenticated %}
                                         {% csrf_token %}
-										<div class="row">
+                                            <input type="hidden" name="name" value="{{ request.user.first_name }}">
+                                            <input type="hidden" name="email" value="{{ request.user.email }}">
+                                            <div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="subject">Subject</label>
+													{{ form.subject }}
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="#">Message</label>
+													{{ form.message }}
+                                                    <br>
+                                                    {{ form.captcha }}
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="submit" value="Send Message" class="btn btn-primary">
+													<div class="submitting"></div>
+												</div>
+											</div>
+                                        {% else %}
+                                            {% csrf_token %}
+                                            <div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="label" for="name">Full Name</label>
@@ -61,7 +86,6 @@
                                                     {{ form.captcha }}
 												</div>
 											</div>
-                                            <div></div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<input type="submit" value="Send Message" class="btn btn-primary">
@@ -69,7 +93,8 @@
 												</div>
 											</div>
 										</div>
-									</form>
+                                        {% endif %}
+                                    </form>
 								</div>
 							</div>
 							<div class="col-md-5 d-flex align-items-stretch">
