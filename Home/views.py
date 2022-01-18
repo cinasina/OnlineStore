@@ -46,3 +46,7 @@ def tags(request, name):
     products = Product.objects.filter(tags__in=name)
     context = {'products': products}
     return render(request, 'store/brand_product.html', context=context)
+
+
+def coming_soon(request):
+    return render(request, 'home/coming_soon.html')
