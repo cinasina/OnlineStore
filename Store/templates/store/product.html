@@ -56,8 +56,8 @@
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="product-breadcroumb">
-                            <a href="#home">Home</a>
-                            <a href="">{{ product.sub_category }}</a>
+                            <a href="{% url 'home:home' %}">Home</a>
+                            <a href="{% url 'store:product_brands' product.main_category|lower product.sub_category.slug %}">{{ product.sub_category }}</a>
                             <a href="">{{ product.name }}</a>
                         </div>
                         <div class="row">
@@ -105,7 +105,7 @@
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade in active" id="home">
                                                 <h2>Product Description</h2>
-                                                <p>{{ product.decsription }}</p>
+                                                <p>{{ product.description }}</p>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="profile">
                                                 <h2>Reviews</h2>
