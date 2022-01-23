@@ -27,14 +27,14 @@
                                     {% thumbnail product.image "100x100" crop="center" as im %}
                                         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href="{% url 'cart:add_product' product.pk %}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                         <a href="{{ product.get_absolute_url|lower }}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                     {% endthumbnail %}
                                 </div>
 
 
-                                    <h2><a href="#">{{ product.name }}</a></h2>
+                                    <h2><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h2>
 
                                 <div class="product-carousel-price">
                                     <ins>${{ product.price }}</ins> <del>$100.00</del>
