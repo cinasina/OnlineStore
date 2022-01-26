@@ -1,161 +1,107 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<title>Contact</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+	<title>Contact</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'contact/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'contact/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'contact/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'contact/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'contact/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'contact/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'contact/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'contact/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'contact/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'contact/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
 
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<div class="container-contact100">
 
-	<link rel="stylesheet" href="{% static 'contact/css/style.css' %}">
-
-	</head>
-	<body>
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section"></h2>
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="{% url 'home:contact' %}" method="post">
+                {% csrf_token %}
+				<span class="contact100-form-title">
+					Send Us A Message
+				</span>
+                {% if request.user.is_authenticated %}
+                    <input class="input100" type="hidden" name="name" value="{{ request.user.first_name }}">
+					<input class="input100" type="hidden" name="email" value="{{ request.user.email }}">
+                {% else %}
+                <div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					{{ form.name }}
+					<span class="focus-input100"></span>
 				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-12">
-					<div class="wrapper">
-						<div class="row no-gutters mb-5">
-							<div class="col-md-7">
-								<div class="contact-wrap w-100 p-md-5 p-4">
-									<h3 class="mb-4">Contact Us</h3>
-									<div id="form-message-warning" class="mb-4"></div>
-				      		<div id="form-message-success" class="mb-4">
-				            Your Message Was Sent, Thank You!
-				      		</div>
-									<form method="post" action="." id="contactForm" name="contactForm" class="contactForm">
-                                        {% if request.user.is_authenticated %}
-                                        {% csrf_token %}
-                                            <input type="hidden" name="name" value="{{ request.user.first_name }}">
-                                            <input type="hidden" name="email" value="{{ request.user.email }}">
-                                            <div class="col-md-12">
-												<div class="form-group">
-													<label class="label" for="subject">Subject</label>
-													{{ form.subject }}
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="label" for="#">Message</label>
-													{{ form.message }}
-                                                    <br>
-                                                    {{ form.captcha }}
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<input type="submit" value="Send Message" class="btn btn-primary">
-													<div class="submitting"></div>
-												</div>
-											</div>
-                                        {% else %}
-                                            {% csrf_token %}
-                                            <div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label class="label" for="name">Full Name</label>
-													{{ form.name }}
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label class="label" for="email">Email Address</label>
-													{{ form.email }}
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="label" for="subject">Subject</label>
-													{{ form.subject }}
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label class="label" for="#">Message</label>
-													{{ form.message }}
-                                                    <br>
-                                                    {{ form.captcha }}
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<input type="submit" value="Send Message" class="btn btn-primary">
-													<div class="submitting"></div>
-												</div>
-											</div>
-										</div>
-                                        {% endif %}
-                                    </form>
-								</div>
-							</div>
-							<div class="col-md-5 d-flex align-items-stretch">
-								<div id="map">
-			          </div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-3">
-								<div class="dbox w-100 text-center">
-			        		<div class="icon d-flex align-items-center justify-content-center">
-			        			<span class="fa fa-map-marker"></span>
-			        		</div>
-			        		<div class="text">
-				            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
-				          </div>
-			          </div>
-							</div>
-							<div class="col-md-3">
-								<div class="dbox w-100 text-center">
-			        		<div class="icon d-flex align-items-center justify-content-center">
-			        			<span class="fa fa-phone"></span>
-			        		</div>
-			        		<div class="text">
-				            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
-				          </div>
-			          </div>
-							</div>
-							<div class="col-md-3">
-								<div class="dbox w-100 text-center">
-			        		<div class="icon d-flex align-items-center justify-content-center">
-			        			<span class="fa fa-paper-plane"></span>
-			        		</div>
-			        		<div class="text">
-				            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-				          </div>
-			          </div>
-							</div>
-							<div class="col-md-3">
-								<div class="dbox w-100 text-center">
-			        		<div class="icon d-flex align-items-center justify-content-center">
-			        			<span class="fa fa-globe"></span>
-			        		</div>
-			        		<div class="text">
-				            <p><span>Website</span> <a href="#">yoursite.com</a></p>
-				          </div>
-			          </div>
-							</div>
-						</div>
-					</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your email: e@a.x">
+					{{ form.email }}
+					<span class="focus-input100"></span>
 				</div>
-			</div>
+                {% endif %}
+                <div class="wrap-input100 validate-input" data-validate = "Please enter the subject">
+                    {{ form.subject }}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{ form.message }}
+					<span class="focus-input100"></span>
+				</div>
+                {{ form.captcha }}
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							Send
+						</span>
+					</button>
+				</div>
+			</form>
 		</div>
-	</section>
+	</div>
 
-	<script src="{% static 'contact/js/jquery.min.js' %}"></script>
-  <script src="{% static 'contact/js/popper.js' %}"></script>
-  <script src="{% static 'contact/js/bootstrap.min.js' %}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="{% static 'contact/js/google-map.js' %}"></script>
 
-	</body>
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="{% static 'contact/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'contact/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'contact/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'contact/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'contact/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'contact/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'contact/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'contact/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'contact/js/main.js' %}"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
 </html>
-
