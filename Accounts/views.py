@@ -18,8 +18,8 @@ def user_login(request):
             messages.success(request, 'You Login Successfully', extra_tags='success')
             if next_url:
                 return redirect(next_url)
-            else:
-                messages.error(request, 'Your Email Or Password Is Wrong!', extra_tags='error')
+        else:
+            messages.error(request, 'Your Email Or Password Is Wrong!', extra_tags='error')
             return redirect('accounts:login')
         return redirect('home:home')
     else:
