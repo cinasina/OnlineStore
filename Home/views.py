@@ -50,3 +50,7 @@ def tags(request, name):
 
 def coming_soon(request):
     return render(request, 'home/coming_soon.html')
+
+
+def about(request):
+    return render(request, 'home/about.html')
