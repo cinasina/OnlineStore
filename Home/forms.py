@@ -11,17 +11,17 @@ class ContactForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'name': forms.TextInput(
-                attrs={"type": "text", "class": "form-control", "name": "name", "id": "name",
-                       "placeholder": "Name"}),
+                attrs={"type": "text", "class": "input100", "name": "name",
+                       "placeholder": "Full Name"}),
             'subject': forms.TextInput(
-                attrs={"type": "subject", "class": "form-control", "name": "subject", "id": "subject",
+                attrs={"type": "subject", "class": "input100", "name": "subject",
                        "placeholder": "Subject"}),
             'email': forms.EmailInput(
-                attrs={"type": "email", "class": "form-control", "name": "email", "id": "email",
-                       "placeholder": "Email"}),
+                attrs={"type": "email", "class": "input100", "name": "email",
+                       "placeholder": "E-mail"}),
             'message': forms.TextInput(
-                attrs={"type": "message", "class": "form-control", "name": "message", "id": "message", "cols": "30",
-                       "rows": "4", "placeholder": "Message"}),
+                attrs={"type": "message", "class": "input100", "name": "message",
+                       "placeholder": "Your Message"}),
         }
 
 
