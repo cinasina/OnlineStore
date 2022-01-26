@@ -1,14 +1,12 @@
 {% load static %}
+{% load compress %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Contact</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{% static 'contact/images/icons/favicon.ico' %}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'contact/vendor/bootstrap/css/bootstrap.min.css' %}">
+	{% compress css %}
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'contact/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 <!--===============================================================================================-->
@@ -24,6 +22,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'contact/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'contact/css/main.css' %}">
+	{% endcompress %}
 <!--===============================================================================================-->
 </head>
 <body>
@@ -76,6 +75,7 @@
 
 	<div id="dropDownSelect1"></div>
 
+	{% compress js %}
 <!--===============================================================================================-->
 	<script src="{% static 'contact/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 <!--===============================================================================================-->
@@ -92,6 +92,7 @@
 	<script src="{% static 'contact/vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'contact/js/main.js' %}"></script>
+	{% endcompress %}
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
